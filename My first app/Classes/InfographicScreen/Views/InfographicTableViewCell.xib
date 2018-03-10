@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InfographicTableViewCell" rowHeight="170" id="KGk-i7-Jjw" customClass="InfographicTableViewCell" customModule="My_first_app" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="159.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NutritionName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aU-5Y-e7A">
+                        <rect key="frame" x="16" y="11" width="192" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="Tf7-7a-9A0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Io-G7-vjy" customClass="HorizontalBarChartView" customModule="Charts">
+                        <rect key="frame" x="16" y="38" width="288" height="110"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NumberGoal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfT-MQ-jmS">
+                                <rect key="frame" x="174" y="45" width="96" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="lgD-Gt-JwX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NumberDaily" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Iz-ls-oQc">
+                                <rect key="frame" x="183.5" y="15" width="86.5" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="4dW-Xa-0uq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Iz-ls-oQc" firstAttribute="width" secondItem="7Io-G7-vjy" secondAttribute="width" multiplier="0.3" id="4AO-1H-nWq"/>
+                            <constraint firstItem="qfT-MQ-jmS" firstAttribute="top" secondItem="4Iz-ls-oQc" secondAttribute="bottom" constant="10" id="6WL-0C-6lD"/>
+                            <constraint firstAttribute="trailing" secondItem="qfT-MQ-jmS" secondAttribute="trailing" constant="18" id="Sf5-o4-c3O"/>
+                            <constraint firstItem="qfT-MQ-jmS" firstAttribute="top" secondItem="7Io-G7-vjy" secondAttribute="top" constant="45" id="Tkm-jE-6ew"/>
+                            <constraint firstItem="qfT-MQ-jmS" firstAttribute="width" secondItem="7Io-G7-vjy" secondAttribute="width" multiplier="0.3" constant="9.6000000000000085" id="Vmr-Av-zAN"/>
+                            <constraint firstAttribute="trailing" secondItem="4Iz-ls-oQc" secondAttribute="trailing" constant="18" id="knK-db-vjH"/>
+                            <constraint firstAttribute="height" constant="110" id="qrU-Ud-Chz"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7Io-G7-vjy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="4H1-YE-Vg8"/>
+                    <constraint firstItem="9aU-5Y-e7A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Arz-xf-YEq"/>
+                    <constraint firstItem="9aU-5Y-e7A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Hv6-OJ-Zqp"/>
+                    <constraint firstItem="7Io-G7-vjy" firstAttribute="top" secondItem="9aU-5Y-e7A" secondAttribute="bottom" constant="5" id="SR7-CV-t69"/>
+                    <constraint firstItem="7Io-G7-vjy" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="fNH-cz-tx0"/>
+                    <constraint firstItem="9aU-5Y-e7A" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.6" id="g4N-Pl-mPe"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="chartView" destination="7Io-G7-vjy" id="kya-CG-xwY"/>
+                <outlet property="numberDailyLabel" destination="4Iz-ls-oQc" id="pTq-gu-cIT"/>
+                <outlet property="numberNutritionLabel" destination="qfT-MQ-jmS" id="gfZ-NT-m5u"/>
+                <outlet property="titleNutritionLabel" destination="9aU-5Y-e7A" id="qdt-2m-3lh"/>
+            </connections>
+            <point key="canvasLocation" x="33" y="146"/>
+        </tableViewCell>
+    </objects>
+</document>

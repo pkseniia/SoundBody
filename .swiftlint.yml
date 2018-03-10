@@ -1,0 +1,25 @@
+disabled_rules: # rule identifiers to exclude from running
+  - cyclomatic_complexity
+opt_in_rules: # some rules are only opt-in
+  - cyclomatic_complexity
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+  - /Users/Tung/Developer/Edvice/Edvice/AppConstants/Images.swift
+  - /Users/Tung/Developer/Edvice/Edvice/AppConstants/Storyboards.swift
+
+line_length: 140
+
+identifier_name:
+  excluded:
+    - !str id
+    - !str ID
+    - !str Id
+    - !str on
+    - !str me
+    - !str ds
+    - !str tv
+    - !str ip
+
+function_body_length:
+  - 50
