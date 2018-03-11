@@ -16,6 +16,7 @@ class InfographicViewController: UIViewController, UITableViewDataSource, UITabl
 
     let titles = ["Calories", "Protein", "Fat", "Carbohydrates"]
     var userNutritionDay = [Double]()
+    var contentString = "You have already exceed your daily "
 
     private struct Constants {
         static let InfographicCellIdentifier = "InfographicTableViewCell"
@@ -42,7 +43,7 @@ class InfographicViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewWillAppear(_ animated: Bool) {
         infographicTableView.reloadData()
-        print(UserDefaults.standard.bool(forKey: AppConstants.LocalPushNotifications.push))
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     /// Method received data from Notification Center.
@@ -116,7 +117,8 @@ class InfographicViewController: UIViewController, UITableViewDataSource, UITabl
                 if userNutritionGoal[indexPath.row] <= userNutritionDay[indexPath.row] {
                     let content = UNMutableNotificationContent()
                     content.title = "Oh, no!"
-                    content.subtitle = "You have already exceed your daily \(titles[indexPath.row].lowercased())"
+                    contentString.append("\(titles[indexPath.row].lowercased()), ")
+                    content.subtitle = contentString
                     content.badge = 1
 
                     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SettingsTableViewController: UITableViewController {
 
@@ -25,8 +26,8 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         setupUI()
-
     }
+
     // Perform segue to EditProfileTableViewController.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
@@ -65,9 +66,37 @@ class SettingsTableViewController: UITableViewController {
     // Method for on/off push notifications.
     @IBAction func pushSwitch(_ sender: UISwitch) {
         if isEnableSwitch.isOn == true {
-            UserDefaults.standard.set(true, forKey: AppConstants.LocalPushNotifications.push)
+            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+                if settings.authorizationStatus == .denied {
+                    guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
+                    DispatchQueue.main.async {
+                        if UIApplication.shared.canOpenURL(settingsUrl) {
+                            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                print("Settings opened: \(success)")
+                            })
+                        }
+                    }
+                    UserDefaults.standard.set(true, forKey: AppConstants.LocalPushNotifications.push)
+                } else {
+                    UserDefaults.standard.set(true, forKey: AppConstants.LocalPushNotifications.push)
+                }
+            }
         } else {
             UserDefaults.standard.set(false, forKey: AppConstants.LocalPushNotifications.push)
+        }
+    }
+
+    /// Method for permission in local push notification.
+    private func pushNotificationRequest() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (isAllow, error)  in
+            let defaults = UserDefaults.standard
+            if isAllow == true {
+                defaults.set(true, forKey: AppConstants.LocalPushNotifications.push)
+            } else {
+                defaults.set(false, forKey: AppConstants.LocalPushNotifications.push)
+            }
+            guard let error = error else { return }
+            print(error.localizedDescription)
         }
     }
 
